@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="LogTableDAO" class="com.wms.daoImpl.LogTableDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="LogTableService" class="com.wms.serviceImpl.LogTableService">
+		<property name="dao" ref="LogTableDAO"></property>
+	</bean>
+	<bean id="LogTableAction" class="com.wms.action.LogTableAction">
+		<property name="service" ref="LogTableService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="TaskDAO" class="com.wms.daoImpl.TaskDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="taskservice" class="com.wms.serviceImpl.TaskService">
+		<property name="dao" ref="TaskDAO"></property>
+	</bean>
+	<bean id="TaskAction" class="com.wms.action.TaskAction">
+		<property name="taskservice" ref="taskservice"></property>
+		<property name="ddjservice" ref="ddjservice"></property>
+		<property name="ssxservice" ref="ssxservice"></property>
+		<property name="recordservice" ref="RecordService"></property>
+		<property name="wpservice" ref="WoodPalletService"></property>
+		<property name="materservice" ref="MaterialService"></property>
+		<property name="whservice" ref="WarehouseService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="MaterialDAO" class="com.wms.daoImpl.MaterialDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="MaterialService" class="com.wms.serviceImpl.MaterialService">
+		<property name="dao" ref="MaterialDAO"></property>
+	</bean>
+	<bean id="MaterialAction" class="com.wms.action.MaterialAction">
+		<property name="service" ref="MaterialService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="StockerFaultDAO" class="com.wms.daoImpl.StockerFaultDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="stockerfaultservice" class="com.wms.serviceImpl.StockerFaultService">
+		<property name="dao" ref="StockerFaultDAO"></property>
+	</bean>
+	<bean id="StockerFaultAction" class="com.wms.action.StockerFaultAction">
+		<property name="service" ref="stockerfaultservice"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="StockerWriteDAO" class="com.wms.daoImpl.StockerWriteDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="StockerWriteService" class="com.wms.serviceImpl.StockerWriteService">
+		<property name="dao" ref="StockerWriteDAO"></property>
+	</bean>
+	<bean id="StockerWriteAction" class="com.wms.action.StockerWriteAction">
+		<property name="service" ref="StockerWriteService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="StandardDAO" class="com.wms.daoImpl.StandardDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="StandardService" class="com.wms.serviceImpl.StandardService">
+		<property name="dao" ref="StandardDAO"></property>
+	</bean>
+	<bean id="StandardAction" class="com.wms.action.StandardAction">
+		<property name="service" ref="StandardService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="ClwriteDAO" class="com.wms.daoImpl.ClwriteDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="ClwriteService" class="com.wms.serviceImpl.ClwriteService">
+		<property name="dao" ref="ClwriteDAO"></property>
+	</bean>
+	<bean id="ClwriteAction" class="com.wms.action.ClwriteAction">
+		<property name="service" ref="ClwriteService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="StockerReturnDAO" class="com.wms.daoImpl.StockerReturnDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="stockerreturnservice" class="com.wms.serviceImpl.StockerReturnService">
+		<property name="dao" ref="StockerReturnDAO"></property>
+	</bean>
+	<bean id="StockerReturnAction" class="com.wms.action.StockerReturnAction">
+		<property name="service" ref="stockerreturnservice"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="WarehouseDAO" class="com.wms.daoImpl.WarehouseDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="WarehouseService" class="com.wms.serviceImpl.WarehouseService">
+		<property name="dao" ref="WarehouseDAO"></property>
+	</bean>
+	<bean id="WarehouseAction" class="com.wms.action.WarehouseAction">
+		<property name="service" ref="WarehouseService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="ClreturnDAO" class="com.wms.daoImpl.ClreturnDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="clreturnservice" class="com.wms.serviceImpl.ClreturnService">
+		<property name="dao" ref="ClreturnDAO"></property>
+	</bean>
+	<bean id="ClreturnAction" class="com.wms.action.ClreturnAction">
+		<property name="service" ref="clreturnservice"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="FactoryDAO" class="com.wms.daoImpl.FactoryDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="FactoryService" class="com.wms.serviceImpl.FactoryService">
+		<property name="dao" ref="FactoryDAO"></property>
+	</bean>
+	<bean id="FactoryAction" class="com.wms.action.FactoryAction">
+		<property name="service" ref="FactoryService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="WoodPalletDAO" class="com.wms.daoImpl.WoodPalletDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="WoodPalletService" class="com.wms.serviceImpl.WoodPalletService">
+		<property name="dao" ref="WoodPalletDAO"></property>
+	</bean>
+	<bean id="WoodPalletAction" class="com.wms.action.WoodPalletAction">
+		<property name="service" ref="WoodPalletService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="UserDAO" class="com.wms.daoImpl.UserDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="UserService" class="com.wms.serviceImpl.UserService">
+		<property name="dao" ref="UserDAO"></property>
+	</bean>
+	<bean id="UserAction" class="com.wms.action.UserAction">
+		<property name="service" ref="UserService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="ClfaultDAO" class="com.wms.daoImpl.ClfaultDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="clfaultservice" class="com.wms.serviceImpl.ClfaultService">
+		<property name="dao" ref="ClfaultDAO"></property>
+	</bean>
+	<bean id="ClfaultAction" class="com.wms.action.ClfaultAction">
+		<property name="service" ref="clfaultservice"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="ClpositionDAO" class="com.wms.daoImpl.ClpositionDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="ClpositionService" class="com.wms.serviceImpl.ClpositionService">
+		<property name="dao" ref="ClpositionDAO"></property>
+	</bean>
+	<bean id="ClpositionAction" class="com.wms.action.ClpositionAction">
+		<property name="service" ref="ClpositionService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="RecordDAO" class="com.wms.daoImpl.RecordDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate">
+		</property>
+	</bean>
+	<bean id="RecordService" class="com.wms.serviceImpl.RecordService">
+		<property name="dao" ref="RecordDAO"></property>
+	</bean>
+	<bean id="RecordAction" class="com.wms.action.RecordAction">
+		<property name="service" ref="RecordService"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="DdjDAO" class="com.wms.daoImpl.DdjDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+	<bean id="ddjservice" class="com.wms.serviceImpl.DdjService">
+		<property name="dao" ref="DdjDAO"></property>
+	</bean>
+
+	<bean id="SsxDAO" class="com.wms.daoImpl.SsxDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+	<bean id="ssxservice" class="com.wms.serviceImpl.SsxService">
+		<property name="dao" ref="SsxDAO"></property>
+	</bean>
+
+	<bean id="PlcadsAction" class="com.wms.action.PlcadsAction">
+		<property name="ddjservice" ref="ddjservice"></property>
+		<property name="ssxservice" ref="ssxservice"></property>
+		<property name="taskservice" ref="taskservice"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="StatusUpdateAction" class="com.wms.action.StatusUpdateAction">
+		<property name="ddjservice" ref="ddjservice"></property>
+		<property name="ssxservice" ref="ssxservice"></property>
+		<property name="clreturnservice" ref="clreturnservice"></property>
+		<property name="clfaultservice" ref="clfaultservice"></property>
+		<property name="stockerreturnservice" ref="stockerreturnservice"></property>
+		<property name="stockerfaultservice" ref="stockerfaultservice"></property>
+		<property name="taskservice" ref="taskservice"></property>
+	</bean>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="adsAction" class="com.wms.action.ADSAction">
+		<property name="ddjservice" ref="ddjservice"></property>
+		<property name="ssxservice" ref="ssxservice"></property>
+		<property name="materialService" ref="MaterialService"></property>
+	</bean>
+
+	<!-- +++++++++++++++Spring 后台自启线程++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean name="ddjJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.wms.thread.DdjUpdateThread" /><!-- 
+			任务执行类 -->
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="timeout" value="0" />
+			</map>
+		</property>
+	</bean>
+	<bean id="ddjSimpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="ddjJob" />
+		<property name="startDelay" value="1000" /><!-- 调度工厂实例化后，经过0秒开始执行调度 -->
+		<property name="repeatInterval" value="10000000" /><!-- 每15分钟调度一次 -->
+	</bean>
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="ddjSimpleTrigger" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="ssxJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.wms.thread.SsxUpdateThread" /><!-- 
+			任务执行类 -->
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="timeout" value="0" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="ssxSimpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="ssxJob" />
+		<property name="startDelay" value="1000" /><!-- 调度工厂实例化后，经过0秒开始执行调度 -->
+		<property name="repeatInterval" value="10000000" /><!-- 每15分钟调度一次 -->
+	</bean>
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="ssxSimpleTrigger" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

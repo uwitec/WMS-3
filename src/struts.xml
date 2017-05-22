@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="WMS" namespace="/" extends="struts-default">
+		<!-- <interceptors> <interceptor name="isLogin" class="com.wms.action.LogTableAction" 
+			/> </interceptors> -->
+		<!-- 登录验证 -->
+		<action name="UserAction" class="UserAction">
+			<result name="login_in">/main.jsp</result>
+			<result name="login_fail">/login.jsp</result>
+			<result name="login_exit">/login.jsp</result>
+			<result name="queryUser">/userManager.jsp</result>
+			<result name="upDateUser">/userManager.jsp</result>
+			<result name="deleteUser">/userManager.jsp</result>
+			<result name="addUser">/UserManager.jsp</result>
+			<!-- <interceptor-ref name="isLogin" />
+			<interceptor-ref name="defaultStack" /> -->
+		</action>
+
+		<action name="ClwriteAction" class="com.wms.action.ClwriteAction">
+			<result name="stop">/workStatus.jsp</result>
+			<result name="outLine">/workStatus.jsp</result>
+		</action>
+
+		<action name="TaskAction" class="TaskAction">
+		    <result name="tasklist">/tasklist.jsp</result>
+		    <result name="starttask">/workStatus.jsp</result>
+		    
+			<result name="addTask">/newWork.jsp</result>
+			<result name="startCut">/newWork.jsp</result>
+			<result name="queryTask">/tasklist.jsp</result>
+			<result name="taskMoveUp">/workStatus.jsp</result>
+			<result name="taskMoveDown">/workStatus.jsp</result>
+			<result name="deleteTask">/workStatus.jsp</result>
+		</action>
+
+		<action name="WarehouseAction" class="com.wms.action.WarehouseAction">
+			<result name="locationmaintenance">/locationMaintenance.jsp</result>
+			<result name="loctionQuery">/locationQuery.jsp</result>
+			<result name="newWork">/newWork.jsp</result>
+		</action>
+
+		<action name="LogTableAction" class="com.wms.action.LogTableAction">
+			<result name="queryLog">/queryLog.jsp</result>
+			<result name="queryWarmming">/warmmingSolution.jsp</result>
+			<result name="reSet">/warmmingSolution.jsp</result>
+			<result name="nextAction">/warmmingSolution.jsp</result>
+			<result name="deleteWarm">/warmmingSolution.jsp</result>
+			<result name="upDateLocation">/warmmingSolution.jsp</result>
+		</action>
+
+		<action name="RecordAction" class="com.wms.action.RecordAction">
+			<result name="queryReport">/statisticalReport.jsp</result>
+			<result name="stockManager">/stockManager.jsp</result>
+			<result name="visualWork">/visualWork.jsp</result>
+		</action>
+
+		<action name="WoodPalletAction" class="com.wms.action.WoodPalletAction">
+			<result name="queryWoodPallet">/trayManager.jsp</result>
+			<result name="addWoodPallet">/trayManager.jsp</result>
+			<result name="deleteWoodPallet">/trayManager.jsp</result>
+		</action>
+		
+		<action name="PlcadsAction" class="com.wms.action.PlcadsAction">
+		    <result name="workstatus">/workStatus.jsp</result>
+			<result name="deletePlcads">/trayManager.jsp</result>
+			<result name="addPlcads">/trayManager.jsp</result>
+			<result name="queryPlcads">/trayManager.jsp</result>
+		</action>
+		<action name="update" class="com.wms.action.StatusUpdateAction" method="update"></action>
+	</package>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+</struts>    
